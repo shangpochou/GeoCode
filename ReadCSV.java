@@ -29,17 +29,18 @@ public class ReadCSV extends Procedure{
                 tmpGData.cityName = this.ParseCSV(item[1]);
                 tmpGData.townshipCode = this.ParseCSV(item[2]);
                 tmpGData.townshipName = this.ParseCSV(item[3]);
-                tmpGData.totalCode = this.ParseCSV(item[4]);
+                tmpGData.villageCode = this.ParseCSV(item[4]);
                 tmpGData.villageName = this.ParseCSV(item[5]);
-                  
-                myDB.geoDataAL.add(tmpGData);
+                 
+                tmpGData.totalCode = tmpGData.cityCode + tmpGData.townshipCode + tmpGData.villageCode;
+                
                 myDB.geoDataHT.put(tmpGData.totalCode, tmpGData);
                 }else{
                 	System.out.println(item);
                 }
                 /*
                 for(int i = 0; i < item.length; i++)
-                	System.out.println(item[i]);
+                	System.out.println(this.ParseCSV(item[i]));
 				*/
             }
             reader.close();

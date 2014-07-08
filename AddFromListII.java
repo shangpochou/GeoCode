@@ -18,7 +18,7 @@ public class AddFromListII extends Procedure{
             reader = new BufferedReader(new FileReader(myDB.addListPath));
          
             // Read the first line or not (comment means yes)
-            reader.readLine();
+            //reader.readLine();
       
             String line = null;
             
@@ -31,11 +31,26 @@ public class AddFromListII extends Procedure{
                 tmpGData.townshipName = this.ParseCSV(item[1]);
                 tmpGData.totalCode = this.ParseCSV(item[2]);
                 tmpGData.villageName = this.ParseCSV(item[3]);
-                tmpGData.cityCode = tmpGData.totalCode.substring(0, 4);
-                tmpGData.townshipCode = tmpGData.totalCode.substring(5, 6);
-//                tmpGData.townshipCode = tmpGData.totalCode.substring(7, 9);
                 
-                myDB.geoDataAL.add(tmpGData);
+                /*
+                 * There are two cases, municipality and
+                 * other cities
+                 * */
+                
+                String firstTwoDigit = tmpGData.totalCode.substring(0,2);
+                /*
+                 * Very dirty code for parsing total code.
+                 * */
+                if(firstTwoDigit.equals("63") || firstTwoDigit.equals("64") || firstTwoDigit.equals("65") || firstTwoDigit.equals("66") || firstTwoDigit.equals("67")){              
+                	tmpGData.cityCode = tmpGData.totalCode.substring(0, 2);
+                	tmpGData.townshipCode = tmpGData.totalCode.substring(2, 7);
+                	tmpGData.villageCode = tmpGData.totalCode.substring(7, 10);
+                }else{
+                	tmpGData.cityCode = tmpGData.totalCode.substring(0, 4);
+                	tmpGData.townshipCode = tmpGData.totalCode.substring(5, 7);
+                	tmpGData.villageCode = tmpGData.totalCode.substring(7, 10);
+                }
+  
                 myDB.geoDataHT.put(tmpGData.totalCode, tmpGData);
                 }else{
                 	System.out.println(item);

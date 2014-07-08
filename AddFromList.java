@@ -30,7 +30,6 @@ public class AddFromList extends Procedure{
                 tmpGData.totalCode = this.ParseCSV(item[4]);
                 tmpGData.villageName = this.ParseCSV(item[5]);
                 
-                myDB.geoDataAL.add(tmpGData);
                 myDB.geoDataHT.put(tmpGData.totalCode, tmpGData);
                 }else{
                 	System.out.println(item);

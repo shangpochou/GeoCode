@@ -3,8 +3,6 @@ import java.util.*;
 
 public class DataBase {
 	
-	
-	public ArrayList<GeoData> geoDataAL;
 	/*
 	 * Hashtable which keeps all the Geo data
 	 * */
@@ -27,14 +25,16 @@ public class DataBase {
 	/*
 	 * Constructor, and config here.
 	 */
-	public DataBase(){
-		this.geoCodePath = new String("GeoCode102.csv");
-		this.deleteListPath = new String("deleteList99_1.csv");
-		this.addListPath = new String("addList99.csv");
-		this.outputCSVPath = new String("GeoCode99.csv");
-		this.geoDataAL = new ArrayList<GeoData>();
+	public DataBase(){	
 		this.deleteList = new ArrayList<String>();
 		this.geoDataHT = new Hashtable<String, GeoData>();
+	}
+	
+	public void SetPath(String geoCodePath, String deleteListPath, String addListPath, String outputPath){
+		this.geoCodePath = geoCodePath;
+		this.deleteListPath = deleteListPath;
+		this.addListPath = addListPath;
+		this.outputCSVPath = outputPath;
 	}
 	
 	public static DataBase GetDataBase(){

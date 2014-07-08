@@ -8,6 +8,8 @@ public class GeoCode {
 
 		DataBase myDB = DataBase.GetDataBase();
 	
+		myDB.SetPath(args[0], args[1], args[2], args[3]);
+		
 		ArrayList<Procedure> myProcAL = new ArrayList<Procedure>();
 		
 		ReadCSV myRCSV = new ReadCSV();
@@ -27,10 +29,7 @@ public class GeoCode {
 		
 		WriteToCSV myWCSV = new WriteToCSV();
 		myProcAL.add(myWCSV);
-		
-		DumpGeoData myDGD = new DumpGeoData();
-//		myProcAL.add(myDGD);
-		
+				
 		for(int i = 0; i < myProcAL.size(); i++){
 			myProcAL.get(i).GetData(myDB);
 			myProcAL.get(i).Task();

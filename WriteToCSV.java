@@ -1,6 +1,7 @@
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Enumeration;
 
 
 public class WriteToCSV extends Procedure{
@@ -22,26 +23,36 @@ public class WriteToCSV extends Procedure{
 		tmpTitle = tmpTitle + ","+'"'+"TownshipName"+'"'+","+'"'+"TotalCode"+'"'+","+'"'+"VillageName"+'"';
 		bw.write(tmpTitle);
 	    bw.newLine();
-		
-		
+/*		
+	    Enumeration<String> e = myDB.geoDataHT.keys();
+
+	    while (e.hasMoreElements())
+	    {
+	    	String tmpkey = e.nextElement();
+	    	GeoData tmpGData = myDB.geoDataHT.get(tmpkey);
+			String temp = new String();
+			System.out.println(tmpGData.townshipCode);
+			temp = temp + '"' + "\t"+tmpGData.cityCode + '"' + "," + '"' + tmpGData.cityName + '"' + ","  + '"' + '\t' +tmpGData.townshipCode + '"'  + ",";
+//			temp = temp + '"' + tmpGData.townshipName + '"'+ "," + '"' + "\t"+tmpGData.villageCode + '"'+ "," + '"' + tmpGData.villageName + '"';
+					
+			bw.write(temp);
+			bw.newLine();
+	    }
+*/	    
+	    
 		for(String key : myDB.geoDataHT.keySet()){
 			GeoData tmpGData = myDB.geoDataHT.get(key);
 
 			String temp = new String();
-	
-	/*		
-			temp = temp + '"' + tmpGData.cityName + '"' + "," + '"' + tmpGData.townshipName + '"'+ "," + '"' + tmpGData.villageName + '"' + ",";
-	//		temp = temp + '"' + tmpGData.cityCode + '"' + "," + '"' + tmpGData.townshipCode + '"';
-			temp = temp + '"' + tmpGData.cityCode + '"' + "," + '"' + tmpGData.townshipCode + '"'+ "," + '"' + tmpGData.totalCode + '"';
-	*/		
-			temp = temp + '"' + tmpGData.cityCode + '"' + "," + '"' + tmpGData.cityName + '"' + ","  + '"' + tmpGData.townshipCode + '"'  + ",";
-			temp = temp + '"' + tmpGData.townshipName + '"'+ "," + '"' + tmpGData.totalCode + '"'+ "," + '"' + tmpGData.villageName + '"';
 		
-			
+			temp = temp + '"' + "\t"+tmpGData.cityCode + '"' + "," + '"' + tmpGData.cityName + '"' + ","  + '"' + '\t' +tmpGData.townshipCode + '"'  + ",";
+			temp = temp + '"' + tmpGData.townshipName + '"'+ "," + '"' + "\t"+tmpGData.villageCode + '"'+ "," + '"' + tmpGData.villageName + '"';
+					
 			bw.write(temp);
 			bw.newLine();
 			
 		}
+		
 		bw.close();
 	}
 	
