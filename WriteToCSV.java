@@ -23,22 +23,6 @@ public class WriteToCSV extends Procedure{
 		tmpTitle = tmpTitle + ","+'"'+"TownshipName"+'"'+","+'"'+"TotalCode"+'"'+","+'"'+"VillageName"+'"';
 		bw.write(tmpTitle);
 	    bw.newLine();
-/*		
-	    Enumeration<String> e = myDB.geoDataHT.keys();
-
-	    while (e.hasMoreElements())
-	    {
-	    	String tmpkey = e.nextElement();
-	    	GeoData tmpGData = myDB.geoDataHT.get(tmpkey);
-			String temp = new String();
-			System.out.println(tmpGData.townshipCode);
-			temp = temp + '"' + "\t"+tmpGData.cityCode + '"' + "," + '"' + tmpGData.cityName + '"' + ","  + '"' + '\t' +tmpGData.townshipCode + '"'  + ",";
-//			temp = temp + '"' + tmpGData.townshipName + '"'+ "," + '"' + "\t"+tmpGData.villageCode + '"'+ "," + '"' + tmpGData.villageName + '"';
-					
-			bw.write(temp);
-			bw.newLine();
-	    }
-*/	    
 	    
 		for(String key : myDB.geoDataHT.keySet()){
 			GeoData tmpGData = myDB.geoDataHT.get(key);
