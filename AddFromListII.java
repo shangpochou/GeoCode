@@ -46,7 +46,7 @@ public class AddFromListII extends Procedure{
                 	tmpGData.townshipCode = tmpGData.totalCode.substring(2, 7);
                 	tmpGData.villageCode = tmpGData.totalCode.substring(7, 10);
                 }else{
-                	tmpGData.cityCode = tmpGData.totalCode.substring(0, 4);
+                	tmpGData.cityCode = tmpGData.totalCode.substring(0, 5);
                 	tmpGData.townshipCode = tmpGData.totalCode.substring(5, 7);
                 	tmpGData.villageCode = tmpGData.totalCode.substring(7, 10);
                 }
